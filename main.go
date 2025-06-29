@@ -5,6 +5,7 @@ import (
 )
 
 func main() {
-	utils.Clear()
+	utils.ClearCmd()
 	utils.ToolName()
+	utils.GetURL()
 }
