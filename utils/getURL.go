@@ -1,19 +1,17 @@
 package utils
 
 import (
-	"bufio"
 	"fmt"
-	"os"
 	"strings"
 
 	"github.com/redseverity/akfindurl/config"
 )
 
-func GetURL() string {
-	reader := bufio.NewReader(os.Stdin)
+func GetURL() {
+	var input string
 
-	fmt.Print(BoldText, RedText, "[+]", BlueText, " Place URL: ", DefaultText)
-	input, _ := reader.ReadString('\n')
+	fmt.Print(BoldText + RedText + "[+]" + CyanText + " Place URL: " + DefaultText)
+	fmt.Scanln(&input)
 	input = strings.TrimSpace(input)
 
 	// check if it exists in the Supported_URL_schemes list
@@ -27,8 +25,8 @@ func GetURL() string {
 
 	if !hasScheme {
 		input = config.Default_URL_scheme + input
-		fmt.Print(clearLine, BoldText, RedText, "[+]", BlueText, " Place URL: ", DefaultText, input)
+		fmt.Print(clearLine + BoldText + RedText + "[✓]" + CyanText + " Place URL: " + DefaultText + input)
 	}
 
-	return input
+	config.URL = input
 }
