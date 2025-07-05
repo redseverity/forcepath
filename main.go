@@ -16,7 +16,8 @@ func main() {
 	case "start":
 		utils.ClearCmd()
 		utils.ToolName()
-		fmt.Println(utils.BoldText + utils.GreenText + "\n{ put the tool information }\n" + utils.DefaultText)
+		fmt.Println(utils.BoldText + utils.GreenText + "\n{ Put the tool information }\n" + utils.DefaultText)
+		fmt.Print(utils.BoldText + utils.RedText + "[+]" + utils.CyanText + " target URL: " + utils.DefaultText)
 		utils.GetURL()
 
 	case "config":

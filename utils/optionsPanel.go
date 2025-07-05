@@ -11,7 +11,7 @@ func OptionsPanel() string {
 	for {
 		fmt.Println(BoldText + GreenText + "1 - Start the tool")
 		fmt.Println("2 - Settings" + DefaultText)
-		fmt.Print(BoldText + RedText + "\n[+] " + CyanText + "Option: " + DefaultText)
+		fmt.Print(BoldText + RedText + "\n[+] " + CyanText + "option: " + DefaultText)
 
 		var input string
 		fmt.Scanln(&input)
