@@ -23,7 +23,6 @@ func OptionsPanel() string {
 			return "config"
 		}
 
-		ClearCmd()
 		ToolName()
 		fmt.Println(BoldText + RedText + "\n{ Invalid input. Please enter a valid option. }\n" + DefaultText)
 	}

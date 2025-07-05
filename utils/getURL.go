@@ -1,43 +1,40 @@
 package utils
 
 import (
+	"bufio"
 	"fmt"
 	"net/url"
-	"regexp"
+	"os"
 	"strings"
 
 	"github.com/redseverity/gosubfinder/config"
 )
 
-func errorAlert() {
-	ClearCmd()
-	ToolName()
-	fmt.Println(BoldText + RedText + "\n{ Invalid URL format, Please try again }\n" + DefaultText)
-	fmt.Print(BoldText + RedText + "[+]" + CyanText + " target URL: " + DefaultText)
-}
-
 func GetURL() {
-
+	scanner := bufio.NewScanner(os.Stdin)
 	var raw string
-	verifyScheme := regexp.MustCompile(`^[a-zA-Z][a-zA-Z0-9+.-]*://`)
 
 	for {
+		if !scanner.Scan() {
+			ShowExitToolAlert()
+			return
+		}
 
-		fmt.Scanln(&raw)
+		raw = scanner.Text()
 		raw = strings.TrimSpace(raw)
 
-		if raw == "" {
-			errorAlert()
+		if raw == "" || strings.Contains(raw, " ") {
+			ShowURLFormatAlert()
 			continue
 		}
 
-		if !verifyScheme.MatchString(raw) {
+		if !strings.HasPrefix(raw, "http://") && !strings.HasPrefix(raw, "https://") {
 			raw = config.Default_Scheme + raw
 		}
 
 		parsed, err := url.ParseRequestURI(raw)
 		if err != nil || parsed.Host == "" {
-			errorAlert()
+			ShowURLFormatAlert()
 			continue
 		}
 
