@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/redseverity/akfindurl/utils"
+	"github.com/redseverity/gosubfinder/utils"
 )
 
 func main() {

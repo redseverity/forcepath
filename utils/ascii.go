@@ -6,19 +6,12 @@ import (
 )
 
 func ToolName() {
-	fmt.Println(strings.Repeat(BoldText+RedText+"="+DefaultText, 73))
-	fmt.Print("\n")
-	fmt.Println(RedText + ` ▄▄▄       ██ ▄█▀  █████▒██▓ ███▄    █ ▓█████▄  █    ██  ██▀███   ██▓    
-▒████▄     ██▄█▒ ▓██   ▒▓██▒ ██ ▀█   █ ▒██▀ ██▌ ██  ▓██▒▓██ ▒ ██▒▓██▒    
-▒██  ▀█▄  ▓███▄░ ▒████ ░▒██▒▓██  ▀█ ██▒░██   █▌▓██  ▒██░▓██ ░▄█ ▒▒██░    
-░██▄▄▄▄██ ▓██ █▄ ░▓█▒  ░░██░▓██▒  ▐▌██▒░▓█▄   ▌▓▓█  ░██░▒██▀▀█▄  ▒██░    
- ▓█   ▓██▒▒██▒ █▄░▒█░   ░██░▒██░   ▓██░░▒████▓ ▒▒█████▓ ░██▓ ▒██▒░██████▒
- ▒▒   ▓▒█░▒ ▒▒ ▓▒ ▒ ░   ░▓  ░ ▒░   ▒ ▒  ▒▒▓  ▒ ░▒▓▒ ▒ ▒ ░ ▒▓ ░▒▓░░ ▒░▓  ░
-  ▒   ▒▒ ░░ ░▒ ▒░ ░      ▒ ░░ ░░   ░ ▒░ ░ ▒  ▒ ░░▒░ ░ ░   ░▒ ░ ▒░░ ░ ▒  ░
-  ░   ▒   ░ ░░ ░  ░ ░    ▒ ░   ░   ░ ░  ░ ░  ░  ░░░ ░ ░   ░░   ░   ░ ░   
-      ░  ░░  ░           ░           ░    ░       ░        ░         ░  ░
-                                        ░` + DefaultText)
-	fmt.Println(strings.Repeat(BoldText+RedText+"="+DefaultText, 73))
+	fmt.Println(strings.Repeat(BoldText+RedText+"="+DefaultText, 21))
+	fmt.Println(RedText + `        ▌ ▐▘▘   ▌    
+▛▌▛▌▛▘▌▌▛▌▜▘▌▛▌▛▌█▌▛▘
+▙▌▙▌▄▌▙▌▙▌▐ ▌▌▌▙▌▙▖▌ 
+▄▌` + DefaultText)
+	fmt.Println(strings.Repeat(BoldText+RedText+"="+DefaultText, 21))
 }
 
 const Counter = "[00:00:00] █████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░"

@@ -6,7 +6,7 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/redseverity/akfindurl/config"
+	"github.com/redseverity/gosubfinder/config"
 )
 
 func errorAlert() {
