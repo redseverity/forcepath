@@ -1,7 +1,18 @@
 # gosubfinder
 
-**gosubfinder** is an automatic directory discovery tool without wordlist written in Go.
+**gosubfinder** is an automatic directory discovery tool written in Go that works without relying on static wordlists.
 
-Unlike traditional tools that depend on large, static wordlists, **gosubfinder** takes a dynamic approach: it generates potential directory names on the fly and tests them in real-timce. This method avoids the need to load huge wordlists into memory, making it more memory-efficient and adaptable to different targets.
+Unlike traditional tools that depend on large, predefined wordlists, **gosubfinder** takes a brute-force approach: it dynamically generates and tests subdirectory names in real time. This avoids the need to load massive lists into memory, making it faster, more memory-efficient, and suitable for adaptive directory enumeration.
 
-Ideal for reconnaissance, CTFs, or web enumeration tasks.
+Perfect for reconnaissance, Capture The Flag (CTF) challenges, and general web enumeration tasks.
+
+---
+
+## 📦 Installation
+
+To install `gosubfinder`, you need to have [Go](https://go.dev/dl/) installed (version 1.16 or higher recommended).
+
+Run the following command to install the tool:
+
+```bash
+go install github.com/redseverity/gosubfinder@latest
