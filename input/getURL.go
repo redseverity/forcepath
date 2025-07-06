@@ -7,7 +7,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/redseverity/gosubfinder/config"
+	urlsettings "github.com/redseverity/gosubfinder/settings/url"
 	"github.com/redseverity/gosubfinder/utils"
 )
 
@@ -16,39 +16,52 @@ func GetURL() {
 	var raw string
 
 	utils.ShowEnterToolInfoAlert()
-	fmt.Print(utils.PrefixPending + utils.PromptTargetURL)
 
 	for {
-		if !scanner.Scan() {
-			utils.ShowToolClosedAlert()
-			return
+
+		fmt.Print(utils.PrefixPending + utils.PromptTargetURL)
+
+		// read and validate basic inputc
+		{
+			if !scanner.Scan() {
+				utils.ShowToolClosedAlert()
+				return
+			}
+
+			raw = scanner.Text()
+			raw = strings.TrimSpace(raw)
+
+			if raw == "" || strings.Contains(raw, " ") {
+				utils.ShowInvalidURLAlert()
+				continue
+			}
+
 		}
 
-		raw = scanner.Text()
-		raw = strings.TrimSpace(raw)
+		// add scheme and trailing slash if missing
+		{
+			if !strings.HasPrefix(raw, "http://") && !strings.HasPrefix(raw, "https://") {
+				raw = urlsettings.DefaultScheme + raw
+			}
 
-		if raw == "" || strings.Contains(raw, " ") {
-			utils.ShowInvalidURLAlert()
-			fmt.Print(utils.PrefixPending + utils.PromptTargetURL)
-			continue
+			if !strings.HasSuffix(raw, "/") {
+				raw += "/"
+			}
 		}
 
-		if !strings.HasPrefix(raw, "http://") && !strings.HasPrefix(raw, "https://") {
-			raw = config.Default_Scheme + raw
-		}
-
+		// validate final URL structure
 		parsed, err := url.ParseRequestURI(raw)
 		if err != nil || parsed.Host == "" {
 			utils.ShowInvalidURLAlert()
-			fmt.Print(utils.PrefixPending + utils.PromptTargetURL)
 			continue
 		}
 
 		break
 	}
 
+	// URL is valid and ready to be used
 	utils.ShowEnterToolInfoAlert()
 	fmt.Print(utils.PrefixSuccess, utils.PromptTargetURL, raw)
 
-	config.URL = raw
+	urlsettings.URL = raw
 }
