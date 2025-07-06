@@ -32,3 +32,10 @@ const (
 	CyanText    = "\033[36m"
 	WhiteText   = "\033[37m"
 )
+
+// counter
+const (
+	ProgressBarPrefix = "[00:00:00] "
+	ProgressBarFilled = "█"
+	ProgressBarEmpty  = "░"
+)

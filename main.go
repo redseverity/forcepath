@@ -1,14 +1,15 @@
 package main
 
 import (
-	"fmt"
-
 	"github.com/redseverity/gosubfinder/cmd"
+	"github.com/redseverity/gosubfinder/validation"
 )
 
 func main() {
+	args := cmd.GetArgs()
 
-	cmd.GetURL()
+	parsedURL := validation.NormalizeURL(args.URL)
 
-	fmt.Print()
+	if parsedURL == "" {
+	}
 }

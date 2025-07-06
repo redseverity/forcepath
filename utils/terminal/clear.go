@@ -1,4 +1,4 @@
-package utils
+package terminal
 
 import (
 	"os"
@@ -6,7 +6,7 @@ import (
 	"runtime"
 )
 
-func ClearCmd() {
+func Clear() {
 	var cmd *exec.Cmd
 
 	switch runtime.GOOS {

@@ -9,12 +9,12 @@ import (
 
 func ShowSuccess(text string) {
 	fmt.Print(utils.BoldText + utils.GreenText)
-	fmt.Print("\n", text, "\n\n", utils.DefaultText)
+	fmt.Print("\n{ ", text, " }\n\n", utils.DefaultText)
 }
 
 func ShowError(text string) {
 	fmt.Fprint(os.Stderr, utils.BoldText, utils.RedText)
-	fmt.Fprint(os.Stderr, "\n", text, "\n\n", utils.DefaultText)
+	fmt.Fprint(os.Stderr, "\n{ ", text, " }\n\n", utils.DefaultText)
 }
 
 func ShowExit() {
