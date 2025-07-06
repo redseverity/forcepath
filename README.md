@@ -16,3 +16,28 @@ Run the following command to install the tool:
 
 ```bash
 go install github.com/redseverity/gosubfinder@latest
+```
+
+---
+
+## 🚀 Usage
+
+Basic syntax
+```bash
+gosubfinder -url <target_url> [-charset <charset>] [flags]
+```
+
+Scan a website with default settings (charset: abc123)
+```bash
+gosubfinder -url "https://example.com"
+```
+
+Specify a custom charset for brute forcing
+```bash
+gosubfinder -url "https://example.com" -charset "abc123+-.=?"
+```
+
+Show help
+```bash
+gosubfinder -h
+```
