@@ -8,6 +8,9 @@ const (
 
 // Prompt prefixes
 const (
-	PrefixPending string = BoldText + RedText + "[+]" + DefaultText
-	PrefixSuccess string = BoldText + RedText + "[✓]" + DefaultText
+	IndicatorPending string = BoldText + RedText + "[+]" + DefaultText
+	IndicatorSuccess string = BoldText + GreenText + "[✓]" + DefaultText
+
+	IndicatorReachable   string = BoldText + GreenText + "[●]" + DefaultText
+	IndicatorUnreachable string = BoldText + RedText + "[●]" + DefaultText
 )

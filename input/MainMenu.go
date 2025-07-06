@@ -14,7 +14,7 @@ func MainMenu() string {
 		fmt.Print(utils.BoldText + utils.GreenText)
 		fmt.Println("1 - Start the tool")
 		fmt.Println("2 - Settings")
-		fmt.Print("\n" + utils.PrefixPending + utils.PromptOption)
+		fmt.Print("\n" + utils.IndicatorPending + utils.PromptOption)
 
 		var input string
 		fmt.Scanln(&input)

@@ -11,15 +11,18 @@ import (
 	"github.com/redseverity/gosubfinder/utils"
 )
 
+func pendengInput() {
+	fmt.Print(utils.IndicatorPending + utils.PromptTargetURL)
+}
+
 func GetURL() {
 	scanner := bufio.NewScanner(os.Stdin)
 	var raw string
 
 	utils.ShowEnterToolInfoAlert()
+	pendengInput()
 
 	for {
-
-		fmt.Print(utils.PrefixPending + utils.PromptTargetURL)
 
 		// read and validate basic inputc
 		{
@@ -33,6 +36,7 @@ func GetURL() {
 
 			if raw == "" || strings.Contains(raw, " ") {
 				utils.ShowInvalidURLAlert()
+				pendengInput()
 				continue
 			}
 
@@ -53,6 +57,14 @@ func GetURL() {
 		parsed, err := url.ParseRequestURI(raw)
 		if err != nil || parsed.Host == "" {
 			utils.ShowInvalidURLAlert()
+			pendengInput()
+			continue
+		}
+
+		var urlStatus = utils.CheckURL(raw, 5)
+		if !urlStatus.Verified {
+			utils.ShowHostUnreachableAlert()
+			pendengInput()
 			continue
 		}
 
@@ -61,7 +73,7 @@ func GetURL() {
 
 	// URL is valid and ready to be used
 	utils.ShowEnterToolInfoAlert()
-	fmt.Print(utils.PrefixSuccess, utils.PromptTargetURL, raw)
+	fmt.Print(utils.IndicatorSuccess, utils.PromptTargetURL, raw)
 
 	urlsettings.URL = raw
 }
