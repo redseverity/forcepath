@@ -1,6 +1,7 @@
 package config
 
 var (
-	DefaultScheme = "https://"
-	URL           = ""
+	PossibleSchemes = []string{"http://", "https://"}
+	DefaultScheme   = "https://"
+	URL             string
 )
