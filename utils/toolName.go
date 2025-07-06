@@ -5,14 +5,16 @@ import (
 	"strings"
 )
 
+func printVisualDivider() {
+	fmt.Println(strings.Repeat(BoldText+RedText+"="+DefaultText, 21))
+}
+
 func ToolName() {
 	ClearCmd()
-	fmt.Println(strings.Repeat(BoldText+RedText+"="+DefaultText, 21))
+	printVisualDivider()
 	fmt.Println(RedText + `        ▌ ▐▘▘   ▌    
 ▛▌▛▌▛▘▌▌▛▌▜▘▌▛▌▛▌█▌▛▘
 ▙▌▙▌▄▌▙▌▙▌▐ ▌▌▌▙▌▙▖▌ 
 ▄▌` + DefaultText)
-	fmt.Println(strings.Repeat(BoldText+RedText+"="+DefaultText, 21))
+	printVisualDivider()
 }
-
-const Counter = "[00:00:00] █████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░"

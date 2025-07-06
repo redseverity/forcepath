@@ -1,24 +1,15 @@
 package main
 
 import (
-	"fmt"
-
-	"github.com/redseverity/gosubfinder/utils"
+	"github.com/redseverity/gosubfinder/input"
 )
 
 func main() {
-	utils.ToolName()
-
-	option := utils.OptionsPanel()
-
-	switch option {
+	switch input.MainMenu() {
 	case "start":
-		utils.ToolName()
-		fmt.Println(utils.BoldText + utils.GreenText + "\n{ Put the tool information }\n" + utils.DefaultText)
-		fmt.Print(utils.BoldText + utils.RedText + "[+]" + utils.CyanText + " target URL: " + utils.DefaultText)
-		utils.GetURL()
+		input.GetURL()
 
-	case "config":
+	case "settings":
 		break // next code
 	}
 }
