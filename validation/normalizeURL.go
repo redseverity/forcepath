@@ -3,7 +3,6 @@ package validation
 import (
 	"fmt"
 	neturl "net/url"
-	"os"
 	"regexp"
 	"strings"
 
@@ -52,8 +51,7 @@ func NormalizeURL(url string) string {
 
 	// URL is valid and ready to be used
 	terminal.ShowBanner()
-	fmt.Fprint(os.Stderr, utils.BoldText, utils.GreenText)
-	fmt.Fprint(os.Stderr, "\nParameters configuration.\n\n")
+	messages.ShowSuccess("Parameters configuration.")
 	fmt.Print(utils.IndicatorSuccess, utils.PromptTargetURL, url)
 
 	// set the global URL variable
