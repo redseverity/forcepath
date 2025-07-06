@@ -1,15 +1,14 @@
 package main
 
 import (
-	"github.com/redseverity/gosubfinder/input"
+	"fmt"
+
+	"github.com/redseverity/gosubfinder/cmd"
 )
 
 func main() {
-	switch input.MainMenu() {
-	case "start":
-		input.GetURL()
 
-	case "settings":
-		break // next code
-	}
+	cmd.GetURL()
+
+	fmt.Print()
 }
