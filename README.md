@@ -1,8 +1,8 @@
-# gosubfinder
+# forcepath
 
-**gosubfinder** is an automatic directory discovery tool written in Go that works without relying on static wordlists.
+**forcepath** is an automatic directory discovery tool written in Go that works without relying on static wordlists.
 
-Unlike traditional tools that depend on large, predefined wordlists, **gosubfinder** takes a brute-force approach: it dynamically generates and tests subdirectory names in real time. This avoids the need to load massive lists into memory, making it faster, more memory-efficient, and suitable for adaptive directory enumeration.
+Unlike traditional tools that depend on large, predefined wordlists, **forcepath** takes a brute-force approach: it dynamically generates and tests subdirectory names in real time. This avoids the need to load massive lists into memory, making it faster, more memory-efficient, and suitable for adaptive directory enumeration.
 
 Perfect for reconnaissance, Capture The Flag (CTF) challenges, and general web enumeration tasks.
 
@@ -10,12 +10,12 @@ Perfect for reconnaissance, Capture The Flag (CTF) challenges, and general web e
 
 ## 📦 Installation
 
-To install `gosubfinder`, you need to have [Go](https://go.dev/dl/) installed (version 1.16 or higher recommended).
+To install `forcepath`, you need to have [Go](https://go.dev/dl/) installed (version 1.16 or higher recommended).
 
 Run the following command to install the tool:
 
 ```bash
-go install github.com/redseverity/gosubfinder@latest
+go install github.com/redseverity/forcepath@latest
 ```
 
 ---
@@ -24,20 +24,20 @@ go install github.com/redseverity/gosubfinder@latest
 
 Basic syntax
 ```bash
-gosubfinder -url <target_url> [-charset <charset>] [flags]
+forcepath -url <target_url> [-charset <charset>] [flags]
 ```
 
 Scan a website with default settings (charset: abc123)
 ```bash
-gosubfinder -url "https://example.com"
+forcepath -url "https://example.com"
 ```
 
 Specify a custom charset for brute forcing
 ```bash
-gosubfinder -url "https://example.com" -charset "abc123+-.=?"
+forcepath -url "https://example.com" -charset "abc123+-.=?"
 ```
 
 Show help
 ```bash
-gosubfinder -h
+forcepath -h
 ```
