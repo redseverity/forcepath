@@ -4,8 +4,8 @@ import (
 	"flag"
 	"os"
 
-	"github.com/redseverity/gosubfinder/utils/messages"
-	"github.com/redseverity/gosubfinder/utils/terminal"
+	"github.com/redseverity/forcepath/utils/messages"
+	"github.com/redseverity/forcepath/utils/terminal"
 )
 
 type Args struct {

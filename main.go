@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/redseverity/gosubfinder/cmd"
-	"github.com/redseverity/gosubfinder/validation"
+	"github.com/redseverity/forcepath/cmd"
+	"github.com/redseverity/forcepath/validation"
 )
 
 func main() {

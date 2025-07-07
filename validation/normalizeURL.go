@@ -5,9 +5,9 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/redseverity/gosubfinder/network"
-	"github.com/redseverity/gosubfinder/utils/messages"
-	"github.com/redseverity/gosubfinder/utils/terminal"
+	"github.com/redseverity/forcepath/network"
+	"github.com/redseverity/forcepath/utils/messages"
+	"github.com/redseverity/forcepath/utils/terminal"
 )
 
 func NormalizeURL(url string) string {

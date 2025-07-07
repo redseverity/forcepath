@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/redseverity/gosubfinder/utils/text"
+	"github.com/redseverity/forcepath/utils/text"
 )
 
 func Success(msg string) {
