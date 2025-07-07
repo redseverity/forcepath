@@ -25,8 +25,8 @@ func GetArgs() Args {
 
 	if err != nil {
 		terminal.ShowBanner()
-		messages.ShowError("Invalid or malformed arguments.")
-		messages.ShowExit()
+		messages.Error("Invalid or malformed arguments.")
+		messages.Exit()
 	}
 
 	return args

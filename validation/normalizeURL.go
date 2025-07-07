@@ -1,13 +1,11 @@
 package validation
 
 import (
-	"fmt"
 	neturl "net/url"
 	"regexp"
 	"strings"
 
 	"github.com/redseverity/gosubfinder/network"
-	"github.com/redseverity/gosubfinder/utils"
 	"github.com/redseverity/gosubfinder/utils/messages"
 	"github.com/redseverity/gosubfinder/utils/terminal"
 )
@@ -17,8 +15,8 @@ func NormalizeURL(url string) string {
 
 	if url == "" {
 		terminal.ShowBanner()
-		messages.ShowError("The -url flag is required.")
-		messages.ShowExit()
+		messages.Error("The -url flag is required.")
+		messages.Exit()
 	}
 
 	// add scheme and trailing slash if missing
@@ -36,23 +34,25 @@ func NormalizeURL(url string) string {
 	parsed, err := neturl.ParseRequestURI(url)
 	if err != nil || parsed.Host == "" {
 		terminal.ShowBanner()
-		messages.ShowError("The URL is malformed. Please enter a valid URL.")
-		fmt.Print(utils.IndicatorFailure, utils.PromptTargetURL, url, "\n\n")
-		messages.ShowExit()
+		messages.Error("The URL is malformed. Please enter a valid URL.")
+		messages.ErrorInputDetail("target URL:", url)
+		terminal.NewLines(2)
+		messages.Exit()
 	}
 
 	// check if the URL is reachable
 	if !network.CheckURL(url, 5).Verified {
 		terminal.ShowBanner()
-		messages.ShowError("Unable to connect. Host is unreachable or does not exist.")
-		fmt.Print(utils.IndicatorFailure, utils.PromptTargetURL, url, "\n\n")
-		messages.ShowExit()
+		messages.Error("Unable to connect. Host is unreachable or does not exist.")
+		messages.ErrorInputDetail("target URL:", url)
+		terminal.NewLines(2)
+		messages.Exit()
 	}
 
 	// URL is valid and ready to be used
 	terminal.ShowBanner()
-	messages.ShowSuccess("Parameters configuration.")
-	fmt.Print(utils.IndicatorSuccess, utils.PromptTargetURL, url)
+	messages.Success("Parameters configuration.")
+	messages.SuccessInputDetail("target URL:", url)
 
 	// set the global URL variable
 	return url

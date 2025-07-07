@@ -4,19 +4,21 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/redseverity/gosubfinder/utils"
+	"github.com/redseverity/gosubfinder/utils/text"
 )
 
 func printVisualDivider() {
-	fmt.Println(strings.Repeat(utils.BoldText+utils.RedText+"="+utils.DefaultText, 21))
+	fmt.Print(text.Bold, text.Red)
+	fmt.Println(strings.Repeat("=", 21))
+	fmt.Print(text.Reset)
 }
 
 func ShowBanner() {
 	Clear()
 	printVisualDivider()
-	fmt.Println(utils.RedText + `        ▌ ▐▘▘   ▌    
+	fmt.Println(text.Red + `        ▌ ▐▘▘   ▌    
 ▛▌▛▌▛▘▌▌▛▌▜▘▌▛▌▛▌█▌▛▘
 ▙▌▙▌▄▌▙▌▙▌▐ ▌▌▌▙▌▙▖▌ 
-▄▌` + utils.DefaultText)
+▄▌` + text.Reset)
 	printVisualDivider()
 }

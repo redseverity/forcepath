@@ -4,20 +4,35 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/redseverity/gosubfinder/utils"
+	"github.com/redseverity/gosubfinder/utils/text"
 )
 
-func ShowSuccess(text string) {
-	fmt.Print(utils.BoldText + utils.GreenText)
-	fmt.Print("\n{ ", text, " }\n\n", utils.DefaultText)
+func Success(msg string) {
+	fmt.Print(text.Bold, text.Green)
+	fmt.Print("\n{ ", msg, " }\n\n", text.Reset)
 }
 
-func ShowError(text string) {
-	fmt.Fprint(os.Stderr, utils.BoldText, utils.RedText)
-	fmt.Fprint(os.Stderr, "\n{ ", text, " }\n\n", utils.DefaultText)
+func Error(msg string) {
+	fmt.Fprint(os.Stderr, text.Bold, text.Red)
+	fmt.Fprint(os.Stderr, "\n{ ", msg, " }\n\n", text.Reset)
 }
 
-func ShowExit() {
-	fmt.Print(utils.BoldText, utils.RedText)
+func SuccessInputDetail(label string, param string) {
+	fmt.Print(text.Bold, text.Green, "[✓] ")
+	fmt.Print(text.Cyan, label, " ", text.Reset, param)
+}
+
+func ErrorInputDetail(label string, param string) {
+	fmt.Fprint(os.Stderr, text.Bold, text.Red, "[x] ")
+	fmt.Fprint(os.Stderr, text.Cyan, label, " ", text.Reset, param)
+}
+
+func Exit() {
+	fmt.Print(text.Bold, text.Red)
 	os.Exit(1)
 }
+
+// for future uses;
+const (
+	Indicator = "●"
+)
