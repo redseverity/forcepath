@@ -14,7 +14,6 @@ func NormalizeURL(url string) string {
 	var schemeRegex = regexp.MustCompile(`^https?://`)
 
 	if url == "" {
-		terminal.ShowBanner()
 		messages.Error("The -url flag is required.")
 		messages.Exit()
 	}
@@ -33,7 +32,6 @@ func NormalizeURL(url string) string {
 	// validate final URL structure
 	parsed, err := neturl.ParseRequestURI(url)
 	if err != nil || parsed.Host == "" {
-		terminal.ShowBanner()
 		messages.Error("The URL is malformed. Please enter a valid URL.")
 		messages.ErrorInputDetail("target URL:", url)
 		terminal.NewLines(2)
@@ -42,7 +40,6 @@ func NormalizeURL(url string) string {
 
 	// check if the URL is reachable
 	if !network.CheckURL(url, 5).Verified {
-		terminal.ShowBanner()
 		messages.Error("Unable to connect. Host is unreachable or does not exist.")
 		messages.ErrorInputDetail("target URL:", url)
 		terminal.NewLines(2)
@@ -50,7 +47,7 @@ func NormalizeURL(url string) string {
 	}
 
 	// URL is valid and ready to be used
-	terminal.ShowBanner()
+
 	messages.Success("Parameters configuration.")
 	messages.SuccessInputDetail("target URL:", url)
 

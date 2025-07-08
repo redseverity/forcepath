@@ -5,7 +5,6 @@ import (
 	"os"
 
 	"github.com/redseverity/forcepath/utils/messages"
-	"github.com/redseverity/forcepath/utils/terminal"
 )
 
 type Args struct {
@@ -24,7 +23,6 @@ func GetArgs() Args {
 	err := fs.Parse(os.Args[1:])
 
 	if err != nil {
-		terminal.ShowBanner()
 		messages.Error("Invalid or malformed arguments.")
 		messages.Exit()
 	}
