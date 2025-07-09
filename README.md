@@ -20,6 +20,31 @@ go install github.com/redseverity/forcepath@latest
 
 ---
 
+## 🚀 Guide
+
+#### Flag -url
+
+Allowed formats:
+
+    https://example.com/
+
+    http://example.com
+
+    example.com
+
+If the URL does not include a scheme (like http:// or https://), the tool will automatically add the https:// scheme.
+
+#### Flag -charset
+
+Allowed Characters for -charset:
+
+    a-z  A-Z  0-9  -  _  .  ~
+
+Duplicate characters in the -charset value will be automatically removed.
+For example, if you provide -charset "abbcc1232", it will be treated as "abc123".
+
+---
+
 ## 🚀 Usage
 
 Basic syntax
@@ -34,7 +59,7 @@ forcepath -url "https://example.com"
 
 Specify a custom charset for brute forcing
 ```bash
-forcepath -url "https://example.com" -charset "abc123+-.=?"
+forcepath -url "https://example.com" -charset "abc123-_.~"
 ```
 
 Show help
