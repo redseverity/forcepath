@@ -19,9 +19,12 @@ func GetArgs() Args {
 	fs := flag.NewFlagSet("app", flag.ContinueOnError)
 	fs.SetOutput(io.Discard) // disable automatic messages
 
-	{
-		fs.StringVar(&args.URL, "url", "", "target URL")
-		fs.StringVar(&args.Charset, "charset", "", "character set")
+	fs.StringVar(&args.URL, "url", "", "target URL")
+	fs.StringVar(&args.Charset, "charset", "", "character set")
+
+	if len(os.Args[1:]) == 0 {
+		messages.Error("No flags provided.")
+		usage()
 	}
 
 	err := fs.Parse(os.Args[1:])
@@ -30,17 +33,16 @@ func GetArgs() Args {
 		usage()
 	}
 
-	if args.URL == "" {
-		messages.Error("The -url flag cannot be empty.")
-		usage()
-	}
-
-	if args.Charset == "" {
-		messages.Error("The -charset flag cannot be empty.")
-		usage()
-	}
+	checkRequired(args.URL, "-url")
+	checkRequired(args.Charset, "-charset")
 
 	return args
+}
+
+func checkRequired(value string, name string) {
+	if value == "" {
+		messages.Info("The " + name + " flag cannot be empty.")
+	}
 }
 
 func usage() {
