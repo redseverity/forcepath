@@ -7,6 +7,7 @@ import (
 	"os"
 
 	"github.com/redseverity/forcepath/utils/messages"
+	"github.com/redseverity/forcepath/utils/terminal"
 	"github.com/redseverity/forcepath/utils/text"
 )
 
@@ -45,6 +46,7 @@ func GetArgs() Args {
 }
 
 func usage() {
-	fmt.Print(text.Yellow, "Usage: forcepath -url <target_url> -charset <charset>\n\n"+text.Reset)
+	fmt.Print(text.Yellow, "Usage: forcepath -url <target_url> -charset <charset>"+text.Reset)
+	terminal.NewLines(2)
 	messages.Exit()
 }
