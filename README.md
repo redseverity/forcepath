@@ -24,7 +24,7 @@ go install github.com/redseverity/forcepath@latest
 
 Basic syntax
 ```bash
-forcepath -url <target_url> [-charset <charset>] [flags]
+forcepath -url <target_url> -charset <charset>
 ```
 
 Scan a website with default settings (charset: abc123)
