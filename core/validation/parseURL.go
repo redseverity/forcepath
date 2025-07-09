@@ -5,7 +5,7 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/redseverity/forcepath/network"
+	"github.com/redseverity/forcepath/core/network"
 	"github.com/redseverity/forcepath/utils/messages"
 )
 

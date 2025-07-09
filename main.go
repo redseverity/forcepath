@@ -2,13 +2,13 @@ package main
 
 import (
 	"github.com/redseverity/forcepath/cmd"
+	"github.com/redseverity/forcepath/core/validation"
+	"github.com/redseverity/forcepath/utils"
 	"github.com/redseverity/forcepath/utils/messages"
-	"github.com/redseverity/forcepath/utils/terminal"
-	"github.com/redseverity/forcepath/validation"
 )
 
 func main() {
-	terminal.ShowBanner()
+	utils.ShowBanner()
 
 	args := cmd.GetArgs()
 
