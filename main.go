@@ -11,7 +11,7 @@ func main() {
 
 	args := cmd.GetArgs()
 
-	parsedURL := validation.NormalizeURL(args.URL)
+	parsedURL := validation.ParseURL(args.URL)
 
 	if parsedURL == "" {
 	}

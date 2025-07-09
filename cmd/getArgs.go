@@ -7,6 +7,7 @@ import (
 	"os"
 
 	"github.com/redseverity/forcepath/utils/messages"
+	"github.com/redseverity/forcepath/utils/text"
 )
 
 type Args struct {
@@ -27,9 +28,23 @@ func GetArgs() Args {
 
 	if err != nil {
 		messages.Error("Invalid or malformed arguments.")
-		fmt.Print("Usage: forcepath -url <target_url> -charset <charset>\n\n")
-		messages.Exit()
+		usage()
+	}
+
+	if args.URL == "" {
+		messages.Error("The -url flag cannot be empty.")
+		usage()
+	}
+
+	if args.Charset == "" {
+		messages.Error("The -charset flag cannot be empty.")
+		usage()
 	}
 
 	return args
+}
+
+func usage() {
+	fmt.Print(text.Yellow, "Usage: forcepath -url <target_url> -charset <charset>\n\n"+text.Reset)
+	messages.Exit()
 }

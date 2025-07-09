@@ -4,17 +4,20 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/redseverity/forcepath/utils/terminal"
 	"github.com/redseverity/forcepath/utils/text"
 )
 
 func Success(msg string) {
 	fmt.Print(text.Bold, text.Green)
-	fmt.Print("\n{ ", msg, " }\n\n", text.Reset)
+	fmt.Print("{ ", msg, " }", text.Reset)
+	terminal.NewLines(2)
 }
 
 func Error(msg string) {
 	fmt.Fprint(os.Stderr, text.Bold, text.Red)
-	fmt.Fprint(os.Stderr, "\n{ ", msg, " }\n\n", text.Reset)
+	fmt.Fprint(os.Stderr, "{ ", msg, " }", text.Reset)
+	terminal.NewLines(2)
 }
 
 func SuccessInputDetail(label string, param string) {

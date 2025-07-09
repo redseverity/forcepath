@@ -10,13 +10,8 @@ import (
 	"github.com/redseverity/forcepath/utils/terminal"
 )
 
-func NormalizeURL(url string) string {
+func ParseURL(url string) string {
 	var schemeRegex = regexp.MustCompile(`^https?://`)
-
-	if url == "" {
-		messages.Error("The -url flag is required.")
-		messages.Exit()
-	}
 
 	// add scheme and trailing slash if missing
 	{
@@ -47,7 +42,6 @@ func NormalizeURL(url string) string {
 	}
 
 	// URL is valid and ready to be used
-
 	messages.Success("Parameters configuration.")
 	messages.SuccessInputDetail("target URL:", url)
 
