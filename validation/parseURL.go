@@ -7,44 +7,31 @@ import (
 
 	"github.com/redseverity/forcepath/network"
 	"github.com/redseverity/forcepath/utils/messages"
-	"github.com/redseverity/forcepath/utils/terminal"
 )
 
 func ParseURL(url string) string {
 	var schemeRegex = regexp.MustCompile(`^https?://`)
 
-	// add scheme and trailing slash if missing
-	{
-		if !schemeRegex.MatchString(url) {
-			url = "https://" + url
-		}
-
-		if !strings.HasSuffix(url, "/") {
-			url += "/"
-		}
+	if !schemeRegex.MatchString(url) {
+		url = "https://" + url
 	}
 
-	// validate final URL structure
+	if !strings.HasSuffix(url, "/") {
+		url += "/"
+	}
+
 	parsed, err := neturl.ParseRequestURI(url)
 	if err != nil || parsed.Host == "" {
 		messages.Error("The URL is malformed. Please enter a valid URL.")
 		messages.ErrorInputDetail("target URL:", url)
-		terminal.NewLines(2)
 		messages.Exit()
 	}
 
-	// check if the URL is reachable
 	if !network.CheckURL(url, 5).Verified {
 		messages.Error("Unable to connect. Host is unreachable or does not exist.")
 		messages.ErrorInputDetail("target URL:", url)
-		terminal.NewLines(2)
 		messages.Exit()
 	}
 
-	// URL is valid and ready to be used
-	messages.Success("Parameters configuration.")
-	messages.SuccessInputDetail("target URL:", url)
-
-	// set the global URL variable
 	return url
 }

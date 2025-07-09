@@ -2,13 +2,10 @@ package cmd
 
 import (
 	"flag"
-	"fmt"
 	"io"
 	"os"
 
 	"github.com/redseverity/forcepath/utils/messages"
-	"github.com/redseverity/forcepath/utils/terminal"
-	"github.com/redseverity/forcepath/utils/text"
 )
 
 type Args struct {
@@ -22,11 +19,12 @@ func GetArgs() Args {
 	fs := flag.NewFlagSet("app", flag.ContinueOnError)
 	fs.SetOutput(io.Discard) // disable automatic messages
 
-	fs.StringVar(&args.URL, "url", "", "target URL")
-	fs.StringVar(&args.Charset, "charset", "", "character set")
+	{
+		fs.StringVar(&args.URL, "url", "", "target URL")
+		fs.StringVar(&args.Charset, "charset", "", "character set")
+	}
 
 	err := fs.Parse(os.Args[1:])
-
 	if err != nil {
 		messages.Error("Invalid or malformed arguments.")
 		usage()
@@ -46,7 +44,6 @@ func GetArgs() Args {
 }
 
 func usage() {
-	fmt.Print(text.Yellow, "Usage: forcepath -url <target_url> -charset <charset>"+text.Reset)
-	terminal.NewLines(2)
+	messages.Info("Usage: forcepath -url <target_url> -charset <charset>")
 	messages.Exit()
 }
