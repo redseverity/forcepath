@@ -24,13 +24,13 @@ func ParseURL(url string) string {
 	if err != nil || parsed.Host == "" {
 		messages.Error("The URL is malformed. Please enter a valid URL.")
 		messages.ErrorInputDetail("target URL:", url)
-		messages.Exit()
+		messages.Exit1()
 	}
 
 	if !network.CheckURL(url, 5).Verified {
 		messages.Error("Unable to connect. Host is unreachable or does not exist.")
 		messages.ErrorInputDetail("target URL:", url)
-		messages.Exit()
+		messages.Exit1()
 	}
 
 	return url

@@ -37,7 +37,7 @@ func GetArgs() Args {
 
 	if args.Help {
 		messages.Help()
-		os.Exit(0)
+		messages.Exit0()
 	}
 
 	if err != nil {
@@ -54,11 +54,11 @@ func GetArgs() Args {
 func checkRequired(value string, name string) {
 	if value == "" {
 		messages.Error("The " + name + " flag cannot be empty.")
-		messages.Exit()
+		messages.Exit1()
 	}
 }
 
 func usage() {
-	messages.Warning("Usage: forcepath -url <target_url> -charset <charset> [flags]")
-	messages.Exit()
+	messages.Warning("Basic usage: forcepath -url <target_url> -charset <charset> [flags]")
+	messages.Exit1()
 }

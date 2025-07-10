@@ -1,6 +1,8 @@
 package main
 
 import (
+	"strconv"
+
 	"github.com/redseverity/forcepath/cmd"
 	"github.com/redseverity/forcepath/core/validation"
 	"github.com/redseverity/forcepath/utils"
@@ -21,6 +23,8 @@ func main() {
 		messages.Success("Parameters loaded.")
 		messages.SuccessInputDetail("target URL:", args.URL)
 		messages.SuccessInputDetail("charset:", args.Charset)
+		messages.SuccessInputDetail("min:", strconv.Itoa(args.Min))
+		messages.SuccessInputDetail("max:", strconv.Itoa(args.Max))
 	}
 
 }

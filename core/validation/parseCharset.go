@@ -13,7 +13,7 @@ func ParseCharset(charset string) string {
 	if !validCharset.MatchString(charset) {
 		messages.Error("Invalid charset provided.")
 		messages.Warning("Supported: a-z  A-Z  0-9  -  _  .  ~")
-		messages.Exit()
+		messages.Exit1()
 	}
 
 	var seen = make(map[rune]bool)
