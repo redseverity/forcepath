@@ -45,15 +45,24 @@ func GetArgs() Args {
 		usage()
 	}
 
-	checkRequired(args.URL, "-url")
-	checkRequired(args.Charset, "-charset")
+	checkEmpty(args.URL, "url")
+	checkEmpty(args.Charset, "charset")
+	checkMinimum(args.Min, "min")
+	checkMinimum(args.Max, "max")
 
 	return args
 }
 
-func checkRequired(value string, name string) {
+func checkEmpty(value string, name string) {
 	if value == "" {
-		messages.Error("The " + name + " flag cannot be empty.")
+		messages.Error("The -" + name + " flag cannot be empty.")
+		messages.Exit1()
+	}
+}
+
+func checkMinimum(value int, name string) {
+	if value < 1 {
+		messages.Error("The -" + name + " flag must be 1 or greater.")
 		messages.Exit1()
 	}
 }
