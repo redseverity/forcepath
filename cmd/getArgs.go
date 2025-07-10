@@ -14,6 +14,7 @@ type Args struct {
 	Charset string
 	Min     int
 	Max     int
+	Timeout int
 }
 
 func GetArgs() Args {
@@ -27,6 +28,7 @@ func GetArgs() Args {
 	fs.StringVar(&args.Charset, "charset", "abc123", "character set")
 	fs.IntVar(&args.Min, "min", 1, "minimum length of generated strings")
 	fs.IntVar(&args.Max, "max", 3, "maximum length of generated strings")
+	fs.IntVar(&args.Timeout, "timeout", 3, "timeout in seconds for each request")
 
 	err := fs.Parse(os.Args[1:])
 
@@ -49,6 +51,7 @@ func GetArgs() Args {
 	checkEmpty(args.Charset, "charset")
 	checkMinimum(args.Min, "min")
 	checkMinimum(args.Max, "max")
+	checkMinimum(args.Timeout, "timeout")
 
 	return args
 }

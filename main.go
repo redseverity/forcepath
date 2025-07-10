@@ -16,24 +16,21 @@ func main() {
 
 	args := cmd.GetArgs()
 
-	{
-		args.URL = validation.ParseURL(args.URL)
-		args.Charset = validation.ParseCharset(args.Charset)
-	}
+	// Validação dos parâmetros
+	args.URL = validation.ParseURL(args.URL)
+	args.Charset = validation.ParseCharset(args.Charset)
 
-	{
-		messages.Success("Parameters loaded.")
-		messages.SuccessInputDetail("target URL:", args.URL)
-		messages.SuccessInputDetail("charset:", args.Charset)
-		messages.SuccessInputDetail("min length:", strconv.Itoa(args.Min))
-		messages.SuccessInputDetail("max length:", strconv.Itoa(args.Max)+"\n")
-	}
+	// Exibição dos parâmetros carregados
+	messages.Success("Parameters loaded.")
+	messages.SuccessInputDetail("Target URL:", args.URL)
+	messages.SuccessInputDetail("Charset:", args.Charset)
+	messages.SuccessInputDetail("Min length:", strconv.Itoa(args.Min))
+	messages.SuccessInputDetail("Max length:", strconv.Itoa(args.Max))
+	messages.SuccessInputDetail("Timeout:", strconv.Itoa(args.Timeout)+"\n")
 
-	{
-		messages.Success("Starting brute-force scan...")
-		bruteforce.Run(args.Charset, args.Min, args.Max, args.URL, 20)
-		fmt.Println()
-		messages.Success("Brute-force scan completed.")
-	}
-
+	// Execução do brute-force
+	messages.Success("Starting brute-force scan...")
+	bruteforce.Run(args.Charset, args.Min, args.Max, args.URL, args.Timeout)
+	fmt.Println()
+	messages.Success("Brute-force scan completed.")
 }
