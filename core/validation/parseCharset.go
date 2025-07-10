@@ -12,7 +12,7 @@ func ParseCharset(charset string) string {
 
 	if !validCharset.MatchString(charset) {
 		messages.Error("Invalid charset provided.")
-		messages.Info("Supported: [a-z, A-Z, 0-9, -, _, ., ~]")
+		messages.Info("Supported: a-z  A-Z  0-9  -  _  .  ~")
 		messages.Exit()
 	}
 
