@@ -17,7 +17,7 @@ func Error(msg string) {
 	fmt.Fprint(os.Stderr, "{ ", msg, " }", text.Reset, "\n\n")
 }
 
-func Info(msg string) {
+func Warning(msg string) {
 	fmt.Print(text.Yellow, msg, text.Reset, "\n\n")
 }
 

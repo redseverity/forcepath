@@ -52,7 +52,7 @@ Basic syntax
 forcepath -url <target_url> -charset <charset>
 ```
 
-Scan a website with default settings (charset: abc123)
+Scan a website with default settings
 ```bash
 forcepath -url "https://example.com"
 ```
@@ -64,5 +64,5 @@ forcepath -url "https://example.com" -charset "abc123-_.~"
 
 Show help
 ```bash
-forcepath -h
+forcepath -help
 ```
