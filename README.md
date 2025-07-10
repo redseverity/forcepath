@@ -4,7 +4,7 @@
 
 Unlike traditional tools that depend on large, predefined wordlists, **forcepath** takes a brute-force approach: it dynamically generates and tests subdirectory names in real time. This avoids the need to load massive lists into memory, making it faster, more memory-efficient, and suitable for adaptive directory enumeration.
 
-Perfect for reconnaissance, Capture The Flag (CTF) challenges, and general web enumeration tasks.
+Ideal for reconnaissance, Capture The Flag (CTF) challenges, and general web enumeration tasks.
 
 ---
 
@@ -20,49 +20,109 @@ go install github.com/redseverity/forcepath@latest
 
 ---
 
-## 🚀 Guide
+## ⚙️ Flags Guide
 
-#### Flag -url
+### `-url`
 
-Allowed formats:
+Defines the target URL to scan.
 
-    https://example.com/
+**Accepted formats:**
 
-    http://example.com
+```
+https://example.com/
+http://example.com
+example.com
+```
 
-    example.com
-
-If the URL does not include a scheme (like http:// or https://), the tool will automatically add the https:// scheme.
-
-#### Flag -charset
-
-Allowed Characters for -charset:
-
-    a-z  A-Z  0-9  -  _  .  ~
-
-Duplicate characters in the -charset value will be automatically removed.
-For example, if you provide -charset "abbcc1232", it will be treated as "abc123".
+If the URL doesn't include a scheme, the tool will **automatically prepend `https://`**.
 
 ---
 
-## 🚀 Usage
+### `-charset`
 
-Basic syntax
-```bash
-forcepath -url <target_url> -charset <charset>
+Specifies the set of characters used for generating directory names.
+
+**Allowed characters:**
+
+```
+a-z  A-Z  0-9  -  _  .  ~
 ```
 
-Scan a website with default settings
+* Duplicate characters are **automatically removed**.
+* If omitted, the default charset is: `"abc123"`
+
+**Example:**
+
 ```bash
-forcepath -url "https://example.com"
+-charset "abbcc1232"  → becomes "abc123"
 ```
 
-Specify a custom charset for brute forcing
+---
+
+### `-min`
+
+Sets the **minimum length** of generated directory names.
+Default: `1`
+
+### `-max`
+
+Sets the **maximum length** of generated directory names.
+Default: `3`
+
+> The generator will start with the smallest combination (`min` length) and go up to the largest (`max` length).
+
+---
+
+### `-help`
+
+Displays the help message with usage examples and exits.
+
+---
+
+## ⚙️ Behavior
+
+* Automatically adds `https://` to URLs without a scheme.
+* Removes duplicate characters in the `-charset` input.
+* Generates all combinations of characters from `min` to `max` length.
+* Attempts to connect to the **host** before starting.
+* Tests each generated path individually and checks for **valid HTTP responses**.
+* Validates required flags and exits with helpful error messages if any are missing.
+
+---
+
+## 🚀 Usage Examples
+
+Basic syntax:
+
 ```bash
-forcepath -url "https://example.com" -charset "abc123-_.~"
+forcepath -url <target_url> -charset <charset> [flags]
 ```
 
-Show help
+Run with defaults:
+
+```bash
+forcepath -url https://example.com
+```
+
+Custom charset with specific length range:
+
+```bash
+forcepath -url https://example.com -charset "abc123-_.~" -min 2 -max 4
+```
+
+Show help:
+
 ```bash
 forcepath -help
 ```
+
+---
+
+## 📚 Learn More
+
+For more information, source code, updates, or to contribute, visit the repository:
+👉 [https://github.com/redseverity/forcepath](https://github.com/redseverity/forcepath)
+
+---
+
+Se quiser, posso também te ajudar a adicionar um `CONTRIBUTING.md`, `LICENSE`, ou um `badge` de build/test/documentação no topo. Deseja?
