@@ -1,9 +1,11 @@
 package main
 
 import (
+	"fmt"
 	"strconv"
 
 	"github.com/redseverity/forcepath/cmd"
+	"github.com/redseverity/forcepath/core/bruteforce"
 	"github.com/redseverity/forcepath/core/validation"
 	"github.com/redseverity/forcepath/utils"
 	"github.com/redseverity/forcepath/utils/messages"
@@ -23,8 +25,15 @@ func main() {
 		messages.Success("Parameters loaded.")
 		messages.SuccessInputDetail("target URL:", args.URL)
 		messages.SuccessInputDetail("charset:", args.Charset)
-		messages.SuccessInputDetail("min:", strconv.Itoa(args.Min))
-		messages.SuccessInputDetail("max:", strconv.Itoa(args.Max))
+		messages.SuccessInputDetail("min length:", strconv.Itoa(args.Min))
+		messages.SuccessInputDetail("max length:", strconv.Itoa(args.Max)+"\n")
+	}
+
+	{
+		messages.Success("Starting brute-force scan...")
+		bruteforce.Run(args.Charset, args.Min, args.Max, args.URL, 20)
+		fmt.Println()
+		messages.Success("Brute-force scan completed.")
 	}
 
 }
