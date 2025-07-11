@@ -9,7 +9,7 @@ import (
 	"github.com/redseverity/forcepath/utils/messages"
 )
 
-func ParseURL(url string) string {
+func ParseURL(url string, timeout int) string {
 	var schemeRegex = regexp.MustCompile(`^https?://`)
 
 	if !schemeRegex.MatchString(url) {
@@ -27,7 +27,7 @@ func ParseURL(url string) string {
 		messages.Exit1()
 	}
 
-	if !network.Request(url, 10).Verified {
+	if !network.Request(url, timeout).Verified {
 		messages.Error("Unable to connect. Host is unreachable or does not exist.")
 		messages.ErrorInputDetail("target URL:", url)
 		messages.Exit1()

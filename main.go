@@ -17,7 +17,7 @@ func main() {
 	args := cmd.GetArgs()
 
 	// Validação dos parâmetros
-	args.URL = validation.ParseURL(args.URL)
+	args.URL = validation.ParseURL(args.URL, args.Timeout)
 	args.Charset = validation.ParseCharset(args.Charset)
 
 	// Exibição dos parâmetros carregados
