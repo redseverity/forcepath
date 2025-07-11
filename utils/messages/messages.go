@@ -31,6 +31,16 @@ func ErrorInputDetail(label string, param string) {
 	fmt.Fprint(os.Stderr, text.Cyan, label, " ", text.Reset, param, "\n\n")
 }
 
+func SuccessRequest(label string, param string) {
+	fmt.Print(text.Bold, text.Green, "● ")
+	fmt.Print(text.Cyan, label, " ", text.Reset, param, "\n")
+}
+
+func ErrorRequest(label string, param string) {
+	fmt.Fprint(os.Stderr, text.Bold, text.Red, "● ")
+	fmt.Fprint(os.Stderr, text.Cyan, label, " ", text.Reset, param, "\n")
+}
+
 func Exit1() {
 	fmt.Print(text.Bold, text.Red)
 	os.Exit(1)
@@ -40,8 +50,3 @@ func Exit0() {
 	fmt.Print(text.Bold, text.Red)
 	os.Exit(0)
 }
-
-// for future uses;
-const (
-	Indicator = "●"
-)

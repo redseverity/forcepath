@@ -27,7 +27,7 @@ func ParseURL(url string) string {
 		messages.Exit1()
 	}
 
-	if !network.CheckURL(url, 5).Verified {
+	if !network.Request(url, 10).Verified {
 		messages.Error("Unable to connect. Host is unreachable or does not exist.")
 		messages.ErrorInputDetail("target URL:", url)
 		messages.Exit1()

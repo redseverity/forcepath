@@ -3,8 +3,7 @@ package messages
 import "fmt"
 
 func Help() {
-	fmt.Println(`
-Usage: forcepath -url <target_url> -charset <charset> [flags]
+	fmt.Println(`Usage: forcepath -url <target_url> -charset <charset> [flags]
 
 Required Flags:
 
@@ -44,7 +43,5 @@ Behavior:
 Examples:
 
   forcepath -url https://example.com -charset abc123 -min 2 -max 4
-  forcepath -url example.com -charset abc -min 1 -max 3
-
-`)
+  forcepath -url example.com -charset abc -min 1 -max 3`)
 }

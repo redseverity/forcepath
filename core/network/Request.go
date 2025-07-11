@@ -12,7 +12,7 @@ type URLCheckResult struct {
 	Status   int    `json:"status"`
 }
 
-func CheckURL(url string, timeout int) URLCheckResult {
+func Request(url string, timeout int) URLCheckResult {
 	client := http.Client{
 		Timeout: time.Duration(timeout) * time.Second,
 	}

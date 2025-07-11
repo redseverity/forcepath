@@ -1,7 +1,10 @@
 package bruteforce
 
 import (
-	"fmt"
+	"strconv"
+
+	"github.com/redseverity/forcepath/core/network"
+	"github.com/redseverity/forcepath/utils/messages"
 )
 
 func Run(charset string, min int, max int, url string, timeout int) {
@@ -9,7 +12,12 @@ func Run(charset string, min int, max int, url string, timeout int) {
 
 	generate = func(prefix string, rest int) {
 		if rest == 0 {
-			fmt.Println(url + prefix) // Output the generated string
+			var request = network.Request(url+prefix, timeout)
+			if request.Verified {
+				messages.SuccessRequest(strconv.Itoa(request.Status)+":", request.URL)
+			} else {
+				messages.ErrorRequest(strconv.Itoa(request.Status)+":", request.URL)
+			}
 			return
 		}
 		for i := 0; i < len(charset); i++ {
