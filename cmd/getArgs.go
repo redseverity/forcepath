@@ -32,12 +32,7 @@ func GetArgs() Args {
 
 	err := fs.Parse(os.Args[1:])
 
-	if len(os.Args[1:]) == 0 {
-		messages.Help()
-		messages.Exit0()
-	}
-
-	if args.Help {
+	if len(os.Args[1:]) == 0 || args.Help {
 		messages.Help()
 		messages.Exit0()
 	}
