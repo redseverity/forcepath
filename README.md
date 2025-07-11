@@ -73,6 +73,13 @@ Default: `3`
 
 ---
 
+### `-timeout`
+
+Sets the timeout (in seconds) for each HTTP request.
+Default: `3`
+
+---
+
 ### `-help`
 
 Displays the help message with usage examples and exits.
@@ -86,6 +93,7 @@ Displays the help message with usage examples and exits.
 * Generates all combinations of characters from `min` to `max` length.
 * Attempts to connect to the **host** before starting.
 * Tests each generated path individually and checks for **valid HTTP responses**.
+* Applies a timeout to each request as defined by the `-timeout` flag.
 * Validates required flags and exits with helpful error messages if any are missing.
 
 ---
@@ -107,7 +115,7 @@ forcepath -url https://example.com
 Custom charset with specific length range:
 
 ```bash
-forcepath -url https://example.com -charset "abc123-_.~" -min 2 -max 4
+forcepath -url https://example.com -charset "abc123-_.~" -min 2 -max 4 -timeout 5
 ```
 
 Show help:
