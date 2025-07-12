@@ -26,11 +26,12 @@ func main() {
 	messages.SuccessInputDetail("Charset:", args.Charset)
 	messages.SuccessInputDetail("Min length:", strconv.Itoa(args.Min))
 	messages.SuccessInputDetail("Max length:", strconv.Itoa(args.Max))
-	messages.SuccessInputDetail("Timeout:", strconv.Itoa(args.Timeout)+"\n")
+	messages.SuccessInputDetail("Timeout:", strconv.Itoa(args.Timeout)+"s")
+	messages.SuccessInputDetail("Delay:", strconv.Itoa(args.Delay)+"ms\n")
 
 	// Execução do brute-force
 	messages.Success("Starting brute-force scan...")
-	bruteforce.Run(args.Charset, args.Min, args.Max, args.URL, args.Timeout)
+	bruteforce.Run(args.Charset, args.Min, args.Max, args.URL, args.Timeout, args.Delay)
 	fmt.Println()
 	messages.Success("Brute-force scan completed.")
 }

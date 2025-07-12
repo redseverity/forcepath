@@ -4,6 +4,7 @@ import (
 	"flag"
 	"io"
 	"os"
+	"strconv"
 
 	"github.com/redseverity/forcepath/utils/messages"
 )
@@ -15,6 +16,7 @@ type Args struct {
 	Min     int
 	Max     int
 	Timeout int
+	Delay   int
 }
 
 func GetArgs() Args {
@@ -29,6 +31,7 @@ func GetArgs() Args {
 	fs.IntVar(&args.Min, "min", 1, "minimum length of generated strings")
 	fs.IntVar(&args.Max, "max", 3, "maximum length of generated strings")
 	fs.IntVar(&args.Timeout, "timeout", 3, "timeout in seconds for each request")
+	fs.IntVar(&args.Delay, "delay", 0, "delay in milliseconds between each request")
 
 	err := fs.Parse(os.Args[1:])
 
@@ -44,9 +47,10 @@ func GetArgs() Args {
 
 	checkEmpty(args.URL, "url")
 	checkEmpty(args.Charset, "charset")
-	checkMinimum(args.Min, "min")
-	checkMinimum(args.Max, "max")
-	checkMinimum(args.Timeout, "timeout")
+	checkMinimum(args.Min, "min", 1)
+	checkMinimum(args.Max, "max", 1)
+	checkMinimum(args.Timeout, "timeout", 1)
+	checkMinimum(args.Delay, "delay", 0)
 
 	return args
 }
@@ -58,9 +62,9 @@ func checkEmpty(value string, name string) {
 	}
 }
 
-func checkMinimum(value int, name string) {
-	if value < 1 {
-		messages.Error("The -" + name + " flag must be 1 or greater.")
+func checkMinimum(value int, name string, min int) {
+	if value < min {
+		messages.Error("The -" + name + " flag must be " + strconv.Itoa(min) + " or greater.")
 		messages.Exit1()
 	}
 }
