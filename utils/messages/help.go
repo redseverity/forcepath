@@ -32,17 +32,24 @@ Optional Flags:
                       Must be ≥ 1.
                       Default: 3
 
+  -delay    int       Delay in milliseconds between each request.
+                      Must be ≥ 0.
+                      Default: 0 (no delay)
+
   -help               Show this help message and exit.
 
 Behavior:
 
-  - If the URL does not include a scheme (http:// or https://), "https://" is added automatically.
+  - If the URL specified in -url does not include a scheme (http:// or https://),
+    'https://' is added automatically.
   - Duplicate characters in -charset are removed automatically.
   - The tool attempts to connect to the target host before starting the scan.
   - Each generated path is tested individually to check for valid HTTP responses.
   - The brute-force process generates strings starting from the shortest combination
     with length = min (e.g., "a") up to the longest with length = max (e.g., "ccc").
-  - The program validates required flags and exits with an error if they are missing.
+  - Between each request, the program waits for the specified delay (in milliseconds)
+    if the -delay flag is set greater than zero, to slow down the scan and avoid
+    triggering rate limits or detection.
   
 Examples:
 

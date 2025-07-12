@@ -80,6 +80,13 @@ Default: `3`
 
 ---
 
+### `-delay`
+
+Sets the delay (in milliseconds) between each HTTP request.  
+Default: `0`
+
+---
+
 ### `-help`
 
 Displays the help message with usage examples and exits.
@@ -88,12 +95,14 @@ Displays the help message with usage examples and exits.
 
 ## ⚙️ Behavior
 
-* Automatically adds `https://` to URLs without a scheme.
+* Automatically adds `https://` to URLs missing a scheme.
 * Removes duplicate characters in the `-charset` input.
 * Generates all combinations of characters from `min` to `max` length.
 * Attempts to connect to the **host** before starting.
 * Tests each generated path individually and checks for **valid HTTP responses**.
 * Applies a timeout to each request as defined by the `-timeout` flag.
+* If the `-delay` flag is set (> 0), waits the specified milliseconds between
+each request to avoid rate limiting.
 * Validates required flags and exits with helpful error messages if any are missing.
 
 ---
@@ -115,7 +124,7 @@ forcepath -url https://example.com
 Custom charset with specific length range:
 
 ```bash
-forcepath -url https://example.com -charset "abc123-_.~" -min 2 -max 4 -timeout 5
+forcepath -url https://example.com -charset "abc123-_.~" -min 2 -max 2 -timeout 5 -delay 1
 ```
 
 Show help:
@@ -131,6 +140,3 @@ forcepath -help
 For more information, source code, updates, or to contribute, visit the repository:
 👉 [https://github.com/redseverity/forcepath](https://github.com/redseverity/forcepath)
 
----
-
-Se quiser, posso também te ajudar a adicionar um `CONTRIBUTING.md`, `LICENSE`, ou um `badge` de build/test/documentação no topo. Deseja?
